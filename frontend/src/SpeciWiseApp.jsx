@@ -771,7 +771,7 @@ function AuthModal({ onClose, onSuccess }) {
 
   async function handleSubmit() {
     setError(""); setMsg("");
-    if (!email.trim() || !password.trim()) { setError("Email aur password dono required hain."); return; }
+    if (!email.trim() || !password.trim()) { setError("enter Email and password both."); return; }
     if (password.length < 6) { setError("Password kam se kam 6 characters ka hona chahiye."); return; }
     setLoading(true);
 
