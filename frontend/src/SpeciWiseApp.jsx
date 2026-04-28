@@ -810,7 +810,7 @@ function AuthModal({ onClose, onSuccess }) {
         {tab === "signup" && (
           <>
             <label className="sw-modal-label">Full Name</label>
-            <input className="sw-modal-input" type="text" placeholder="Tumhara naam" value={name} onChange={e => setName(e.target.value)} onKeyDown={handleKey} />
+            <input className="sw-modal-input" type="text" placeholder="your name" value={name} onChange={e => setName(e.target.value)} onKeyDown={handleKey} />
           </>
         )}
         <label className="sw-modal-label">Email</label>
@@ -824,7 +824,7 @@ function AuthModal({ onClose, onSuccess }) {
         <button className="sw-btn-primary" style={{width:"100%",marginTop:".2rem"}} onClick={handleSubmit} disabled={loading}>
           {loading ? "..." : tab==="signin" ? "Sign In & Begin →" : "Create Account →"}
         </button>
-        <p className="sw-modal-hint">{tab==="signin" ? "Account nahi hai? Upar Create Account tab use karo." : "Already account hai? Sign In tab use karo."}</p>
+        <p className="sw-modal-hint">{tab==="signin" ? "New user? use Create Account " : "Already account, Switch to Sign In "}</p>
       </div>
     </div>
   );
