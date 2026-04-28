@@ -782,7 +782,7 @@ function AuthModal({ onClose, onSuccess }) {
         options: { data: { full_name: name.trim() } },
       });
       if (err) { setError(err.message); setLoading(false); return; }
-      setMsg("Account ban gaya! Confirm email bheja hai — uske baad login ho jaao.");
+      setMsg("Account created, please check mail.");
       setLoading(false);
     } else {
       const { data, error: err } = await supabase.auth.signInWithPassword({
