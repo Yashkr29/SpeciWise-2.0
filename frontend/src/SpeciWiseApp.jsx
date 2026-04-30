@@ -946,7 +946,7 @@ function LandingPage({ onStart }) {
 
         <div className="sw-cta-banner">
           <p className="sw-cta-title">Ready to find your direction?</p>
-          <p className="sw-cta-sub">Takes ~15–20 minutes · No sign-up needed · Completely free</p>
+          <p className="sw-cta-sub">Takes ~15–20 minutes · Completely free</p>
           <button className="sw-btn-primary" onClick={onStart}>Begin Assessment →</button>
         </div>
       </div>
