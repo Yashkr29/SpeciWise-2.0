@@ -65,8 +65,8 @@ SpeciWise/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/speciwise.git
-cd speciwise
+git clone https://github.com/Yashkr29/SpeciWise-2.0.git
+cd SpeciWise-2.0
 ```
 
 ### 2. Install frontend dependencies

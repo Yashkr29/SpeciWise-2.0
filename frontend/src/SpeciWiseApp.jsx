@@ -824,7 +824,7 @@ function AuthModal({ onClose, onSuccess }) {
         <button className="sw-btn-primary" style={{width:"100%",marginTop:".2rem"}} onClick={handleSubmit} disabled={loading}>
           {loading ? "..." : tab==="signin" ? "Sign In & Begin →" : "Create Account →"}
         </button>
-        <p className="sw-modal-hint">{tab==="signin" ? "New user? use Create Account " : "Already account, Switch to Sign In "}</p>
+        <p className="sw-modal-hint">{tab==="signin" ? "new user? Create Account." : "Already account? Switch to Sign In tab "}</p>
       </div>
     </div>
   );
@@ -1475,14 +1475,26 @@ export default function SpeciWiseApp() {
 
   /* ── Auth listener on mount ── */
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setAuthReady(true);
-    });
+    let mounted = true;
+    supabase.auth
+      .getSession()
+      .then(({ data: { session } }) => {
+        if (!mounted) return;
+        setUser(session?.user ?? null);
+      })
+      .catch((err) => {
+        console.warn("Supabase session restore skipped:", err?.message || err);
+      })
+      .finally(() => {
+        if (mounted) setAuthReady(true);
+      });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
       setUser(session?.user ?? null);
     });
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   /* ── Logout ── */
